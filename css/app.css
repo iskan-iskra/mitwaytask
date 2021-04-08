@@ -1,0 +1,23 @@
+input{
+    width: 80%;
+    line-height: normal;
+    
+}
+.dropdownmenu{
+    /* padding: .25rem;
+    background-color: gray; */
+    /* position: absolute;
+    left: 0;
+    top:100%; */
+    display: none;
+    z-index: 100;
+}
+.dropdownmenu.open{
+    display: block;
+
+}
+.container_dropmenu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

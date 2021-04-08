@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="css/app.css"/>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <title>Mitway's task</title>
+    </head>
+    <body>
+        <div id="app" class="mt-5">
+          
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <input type="text" v-model="search" placeholder="search users"> 
+                </div>
+              </div>
+            </div>
+            <table class="table table-striped container">
+                <thead class="table-dark">
+                  <tr>
+                    <th scope="col" class="col-1">#</th>
+                    <th scope="col" class="col-2">Name</th>
+                    <th scope="col" class="col-2">Role</th>
+                    <th scope="col" class="col-2">Status</th>
+                    <th scope="col" class="col-5">options</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(user, index) in filteredUsers" :key=user.id>
+                    <th scope="row">{{ index + 1}}</th>
+                    <td>
+                      <div v-if="userEditId == user.id">
+                        <input @keydown.enter="updateUser(index)" :id="`user-edit-${user.id}`" type="text" v-model="user.name">
+                      </div >
+                      <div v-else>{{ user.name }}</div>
+                    </td>
+                    <td>
+                      <div v-if="userEditId == user.id">
+                        <select @keydown.enter="updateUser(index)" v-model="user.role">
+                            <option value="User">User</option>
+                            <option value="Admin">Admin</option>
+                        </select>
+            
+                      </div >
+                      <div v-else>{{ user.role }}</div>
+                    </td>
+                    <td>{{ user.active }}</td>
+                    <td>
+                      <div class="container_dropmenu">
+                        <button v-if="activeopen === user.id" @click='activeopen = 0'>Option</button>
+                        <button v-else @click='activeopen = user.id' >Option</button>
+                        <div :id="`dropdownmenu-${user.id}`"  :class="{open: activeopen === user.id}" class="dropdownmenu">
+                          <button v-if="userEditId == user.id" @click="updateUser(index)">update</button>
+                          <button v-else @click="settoEditId(user)">Edit</button>
+                          <button @click="deleteUser(index)">Delete</button>
+                          <button @click="disactivateUser(index)">Disactivate</button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
