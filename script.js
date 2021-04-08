@@ -20,9 +20,6 @@ const App = {
         }
     },
     methods:{
-        blurUser(){
-            this.userEditId = ''
-        },
         settoEditId(user){
             this.userEditId = user.id;
             setTimeout(()=>{
