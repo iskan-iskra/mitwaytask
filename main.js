@@ -1,11 +1,12 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 app.use(express.json());
+app.use('/', express.static(__dirname + '/public'));
 
 const cors = require('cors');
 app.use(cors());
 
-const port = 3000;
+const port = process.env.PORT;
 
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
@@ -65,5 +66,5 @@ app.post('/users/:id/disactive', async (req, res) =>{
 
 
 app.listen(port, () =>{
-    console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`Example app listening at http://localhost:${port}\n`)
 })
