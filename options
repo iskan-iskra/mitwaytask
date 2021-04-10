@@ -3,6 +3,9 @@
 $npm init
 $npm install express --save
 
+$npx prisma introspect
+$npx prisma generate
+
 так же более точные инструкции:
 https://expressjs.com/ru/starter/installing.html
 
