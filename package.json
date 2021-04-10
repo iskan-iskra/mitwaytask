@@ -16,5 +16,13 @@
     "cors": "^2.8.5",
     "express": "^4.17.1"
   },
-  "description": ""
+  "description": "Что бы запустить сервер нужно установить NPM и express js ввести команды в терминал: $npm init $npm install express --save",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iskan-iskra/mitwaytask.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iskan-iskra/mitwaytask/issues"
+  },
+  "homepage": "https://github.com/iskan-iskra/mitwaytask#readme"
 }
